@@ -1,6 +1,6 @@
 import './App.css';
 import List from "./componentes/listar_db";
-import { Route, BrowserRouter as Router, Routes, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 function App() {
   return (
