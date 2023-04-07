@@ -8,6 +8,11 @@ class List extends React.Component {
 
   loadData() {
     //carga los datos de la bd en formato json, usar API
+    fetch('http://localhost/BackEnd/db.php')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    });
   }
 
   componentDidMount() {
@@ -16,7 +21,7 @@ class List extends React.Component {
 
   render() {
     return (
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th>ID</th>
