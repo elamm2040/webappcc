@@ -1,49 +1,47 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import ListarDbModel from "./models/listar-db.model";
 
-class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+export default function List() {
+  const shouldLog = useRef(true);
+  const [shifts, setShifts] = useState([]);
 
-  loadData() {
-    //carga los datos de la bd en formato json, usar API
-    fetch('http://localhost/BackEnd/db.php')
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    });
-  }
+  useEffect(() => {
+    if(shouldLog.current) {
+      shouldLog.current = false;
 
-  componentDidMount() {
-    this.loadData();
-  }
+      fetch('http://localhost/BackEnd/db.php')
+      .then(res => res.json())
+      .then(data => {
+        const json = ListarDbModel(data);
+        json.forEach(element => {
+          setShifts(shifts.push(element));
+        });
+        console.log(shifts);
+      });
+    }
+  }, [shifts]);
 
-  render() {
-    return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Client</th>
-            <th>Candidate</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    );
-  }
+  return (
+    <table className="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Client</th>
+          <th>Candidate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  );
 }
-
-export default List;
