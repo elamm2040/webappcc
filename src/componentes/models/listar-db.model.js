@@ -3,6 +3,7 @@ const ListarDbModel = (data = []) => {
 
     data.forEach(element => {
         shifts.push({
+            id: element.sbti_id,
             approved: element.approved,
             break: element.break,
             candidate: element.candidate,
