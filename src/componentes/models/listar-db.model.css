@@ -1,0 +1,156 @@
+body {
+    background-color: #F8F8F8;
+}
+
+.add_button {
+    margin-left: -20px;
+    margin-top: -4px;
+    margin-right: -7px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #45BEF4;
+    color: #FFF;
+    font-size: 14px !important;
+    font-weight: 600;
+    padding: 8px 12px;
+    border: none;
+    transition: all .3s ease;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    margin: 4px 5px;
+    cursor: pointer;
+}
+
+.timesheetDays {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 10px -10px 45px;
+    color: #444444;
+}
+.ant-steps {
+    margin-left: -8px !important;
+}
+
+:where(.css-dev-only-do-not-override-1vtf12y).ant-steps .ant-steps-item-finish .ant-steps-item-icon >.ant-steps-icon .ant-steps-icon-dot,
+:where(.css-dev-only-do-not-override-1vtf12y).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after,
+.ant-steps-item-tail {
+    background: #45BEF4;
+}
+
+:where(.css-dev-only-do-not-override-1vtf12y).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after {
+    width: 30px;
+}
+
+.ant-steps-item-title {
+    width: 75px;
+    padding-right: 10px;
+    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-size: 8.5pt !important;
+    line-height: 1.5;
+    text-indent: initial;
+    border-spacing: 2px;
+    color: #444444;
+    
+    
+}
+
+:where(.css-dev-only-do-not-override-1vtf12y).ant-steps
+{
+    margin-left: -71px;
+    margin-right: 0px;
+}
+.ant-steps-item-description,
+:where(.css-dev-only-do-not-override-1vtf12y).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-description {
+    font-weight: 600;
+    color: #45BEF3;
+    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-size: 8.5pt !important;
+    line-height: 1.5;
+    
+}
+
+.card {
+    opacity: 0.7;
+    width: 314px;
+    background-color: #FFF;
+    border-radius: 6px;
+    border-width: 0px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    box-shadow: 3px 3px 15px 0px rgba(0,0,0,0.15);
+    margin: 10px;
+    color: #444444;
+    max-width: 100%;
+    font-weight: 500;
+    display: block;
+    position: relative;
+}
+
+.card h3 {
+    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #444444;
+}
+
+.card p.duration {
+    font-weight: 700;
+    font-size: 12px;
+    color: #45BEF3;
+    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+}
+
+.card p {
+    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: #444444;
+    font-weight: 500;
+}
+
+.card p.expenses {
+    color: #37C3CA;
+    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    font-weight: 500;
+    cursor: pointer;
+    text-indent: initial;
+    margin-top: 5px;
+    border-spacing: 2px;
+}
+
+.card .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -4px;
+    margin-right: -7px;
+    position: relative;
+    background-color: #45BEF4;
+    color: #FFF;
+    margin-left: 34%;
+    font-size: 14px !important;
+    font-weight: 600;
+    padding: 8px 12px;
+    border: none;
+    transition: all .3s ease;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-position: 12px center;
+    background-repeat: no-repeat;
+    border-collapse: collapse;
+}
+
+.card .button:hover, .add_button:hover {
+    background-color: #4ac661;
+}
