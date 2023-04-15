@@ -6,7 +6,7 @@ import environment from "../environment/environment";
 import {  Button, Card, Col, Row, Steps } from 'antd';
 import { ContainerOutlined } from  '@ant-design/icons';
 import { format } from 'date-fns';
-import './models/listar-db.model.css';
+import './listar_db.css';
 
 export default function List() {
   const shouldLog = useRef(true);
@@ -29,9 +29,10 @@ export default function List() {
 
   return (
     <section className="timesheetDays">
-
-      <button className="add_button"> + Add Shift </button>
-
+      <div className="add">
+        <button className="add_button"> + Add Shift </button>  
+      </div>
+      <br></br>
       <Row gutter={16}>
         { 
           shiftsRedux.map(el => (

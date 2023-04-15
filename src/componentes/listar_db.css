@@ -2,11 +2,16 @@ body {
     background-color: #F8F8F8;
 }
 
+.add {
+    margin-bottom: 20px;
+    width: 100%;
+    padding-left: 40%;
+}
+
 .add_button {
     margin-left: -20px;
     margin-top: -4px;
     margin-right: -7px;
-    display: inline-block;
     vertical-align: middle;
     background-color: #45BEF4;
     color: #FFF;
