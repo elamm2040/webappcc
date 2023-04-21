@@ -6,6 +6,9 @@ import environment from "../environment/environment";
 import {  Button, Card, Col, Row, Steps } from 'antd';
 import { ContainerOutlined } from  '@ant-design/icons';
 import { format } from 'date-fns';
+import { Route, Routes, Link } from 'react-router-dom';
+import Add from "./add_shift";
+
 import './listar_db.css';
 
 export default function List() {
@@ -29,9 +32,10 @@ export default function List() {
 
   return (
     <section className="timesheetDays">
-      <div className="add">
+      <Link to="/add_shift" className="add">
         <button className="add_button"> + Add Shift </button>  
-      </div>
+      </Link>
+      
       <br></br>
       <Row gutter={16}>
         { 
