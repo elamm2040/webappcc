@@ -47,14 +47,30 @@ body {
 }
 
 .timesheetDays {
-    display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     align-items: stretch;
     margin: 10px -10px 45px;
     color: #444444;
+    width: 100%;
 }
+
+.futureTimesheets > h2 {
+    width: 100%;
+    text-align: center;
+    padding: 0px 10px;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ant-row.css-dev-only-do-not-override-1vtf12y {
+    width: 100%;
+    justify-content: center;
+}
+
 .ant-steps {
     margin-left: -8px !important;
 }
@@ -72,7 +88,7 @@ body {
 .ant-steps-item-title {
     width: 75px;
     padding-right: 10px;
-    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-family: Arial;
     font-size: 8.5pt !important;
     line-height: 1.5;
     text-indent: initial;
@@ -91,57 +107,83 @@ body {
 :where(.css-dev-only-do-not-override-1vtf12y).ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-description {
     font-weight: 600;
     color: #45BEF3;
-    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-family: Arial;
     font-size: 8.5pt !important;
     line-height: 1.5;
     
 }
 
-.card {
-    opacity: 0.7;
+.timesheetCard {
     width: 314px;
     background-color: #FFF;
     border-radius: 6px;
-    border-width: 0px;
-    padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 0px;
-    box-shadow: 3px 3px 15px 0px rgba(0,0,0,0.15);
-    margin: 10px;
+    padding: 20px;
+    box-shadow: 3px 3px 15px 0px rgba(0,0,0,0.15) !important;
+    /*margin: 10px;*/
+    border: none;
     color: #444444;
+    width: 400px;
     max-width: 100%;
     font-weight: 500;
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 10px -10px 45px;
     position: relative;
 }
 
-.card h3 {
-    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+.timesheetCard.approved {
+    opacity: 0.7;
+    background-color: #E1E1E1;
+    box-shadow: none !important;
+}
+
+.timesheetCard.future, button.editOptions.future {
+    opacity: 0.7;
+}
+
+.timesheetCard h3 {
+    font-family: Arial;
     font-size: 8.5pt;
     line-height: 1.5;
     font-weight: bold;
     color: #444444;
 }
 
-.card p.duration {
+.timesheetCard h3 .confirm_label {
+    float: right;
+    margin-right: -69px;
+}
+
+.timesheetCard h3 .check {
+    float: right;
+    margin-right: 34px;
+}
+
+.timesheetCard h3 .not_approved {
+    display: none;
+}
+
+.timesheetCard p.duration {
     font-weight: 700;
     font-size: 12px;
     color: #45BEF3;
-    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-family: Arial;
 }
 
-.card p {
-    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+.timesheetCard p {
+    font-family: Arial;
     font-size: 8.5pt;
     line-height: 1.5;
     color: #444444;
     font-weight: 500;
 }
 
-.card p.expenses {
+.timesheetCard p.expenses {
     color: #37C3CA;
-    font-family: 'Avenir LT Std', 'Avenir Next', Arial;
+    font-family: Arial;
     font-size: 8.5pt;
     line-height: 1.5;
     font-weight: 500;
@@ -151,7 +193,7 @@ body {
     border-spacing: 2px;
 }
 
-.card .button {
+.timesheetCard .button {
     display: inline-block;
     vertical-align: middle;
     margin-top: -4px;
@@ -175,6 +217,6 @@ body {
     border-collapse: collapse;
 }
 
-.card .button:hover, .add_button:hover {
+.timesheetCard .button:hover, .add_button:hover {
     background-color: #4ac661;
 }
