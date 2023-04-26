@@ -11,6 +11,13 @@ export const shiftsList = createSlice({
         },
         addAllShifts: (state, { payload }) => {
             state.value = payload;
+        },
+        editShift: (state, { payload }) => {
+            state.value.forEach((v, i) => {
+                if(v.id == payload.id){
+                    state.value[i] = payload;
+                }
+            });
         }
     }
 });

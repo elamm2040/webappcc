@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {  Row, Card, Form, Input } from 'antd';
-import List from "./listar_db";
+import List from "../listar_db";
 import { Route, Routes, Link } from 'react-router-dom';
 
-import './listar_db.css';
-import './add_shift.css';
+import '../listar_db.css';
+import './add-shift.css';
 
-export default function Add_shift() {
+export default function AddShift() {
 
   return (
     <section>
