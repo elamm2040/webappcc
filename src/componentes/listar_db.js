@@ -14,7 +14,6 @@ import General from "./layout/general";
 export default function List() {
   const shouldLog = useRef(true);
   const shiftsRedux = useSelector(state => state.shifts.value);
-  const shiftsRedux1 = useSelector(state => state.shifts.value);
   const dispatch = useDispatch();
   const env = environment;
 
@@ -36,7 +35,7 @@ export default function List() {
 
   return (
     <General>
-      <Link to="/add_shift" className="add">
+      <Link to="./add_shift" className="add">
         <button className="add_button"> + Add Shift </button>  
       </Link>
       <br></br>
@@ -44,7 +43,7 @@ export default function List() {
         <Row gutter={16}>
         { 
           currentShifts.map(el => (
-            <Col span={8} className="col">
+            <Col span={6} className="col">
               <Card className={el.approved == 1 ? 'timesheetCard approved' : 'timesheetCard'}  bordered={false}>
                 <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } 
                   
@@ -88,7 +87,7 @@ export default function List() {
             <Row gutter={16}>
           { 
             futureShifts.map(el => (
-              <Col span={8} className="col">
+              <Col span={6} className="col">
                 <Card className="timesheetCard"  bordered={false}>
                   <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } </h3>
                   <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>

@@ -22,6 +22,6 @@ export const shiftsList = createSlice({
     }
 });
 
-export const { addShift, addAllShifts } = shiftsList.actions;
+export const { addShift, addAllShifts, editShift } = shiftsList.actions;
 
 export default shiftsList.reducer;

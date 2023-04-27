@@ -16,3 +16,131 @@
     margin: 4px 5px;
     cursor: pointer;
 }
+
+.addCard {
+    width: 405px;
+    background-color: #FFF;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 3px 3px 15px 0px rgba(0,0,0,0.15) !important;
+    margin: 10px;
+    color: #444444;
+    max-width: 100%;
+    display: block;
+}
+
+.fields {
+    width: 100%;
+    border: none;
+    margin: auto;
+    border-collapse: collapse;
+    color: #444444;
+}
+
+.fields td {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px;
+}
+
+.fields th:first-child, .fields td:last-child {
+    padding-right: 0px;
+    padding-left: 0px;
+    text-align: left;
+}
+
+.fields .tableButtons {
+    display: inline-block;
+}
+
+.fields .addShiftInput {
+    width: 95% !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    padding-top: 11px !important;
+    font-weight: 700;
+    font-size: 17px;
+    vertical-align: middle;
+    text-align: center;
+    border: solid 1px #CCCCCC;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #37C3CA;
+    background-color: #FFF;
+}
+
+.fields .addShiftHours:hover, 
+.fields .addShiftHours:focus, 
+.fields .addShiftInput:hover, 
+.fields .addShiftInput:focus,
+.fields .counterButton:hover,
+.fields .counterButton:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 2px #FF981D;
+}
+
+.fields .addShiftHours {
+    font-weight: 700;
+    font-size: 17px;
+    vertical-align: middle;
+    text-align: center;
+    border: solid 1px #CCCCCC;
+    border-radius: 4px;
+    padding: 10px;
+    width: 130px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #37C3CA;
+    background-color: #FFF;
+}
+
+.fields .counterButton {
+    margin-left: 2px;
+    margin-right: 2px;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-color: #37C3CA;
+    color: #FFF;
+    font-size: 20px;
+    padding-bottom: 29px;
+}
+
+.fields .dayButton {
+    min-width: 98px;
+    margin: 0px;
+    background-color: #BCBCBC;
+    color: #FFF;
+    padding: 3px 6px;
+    font-size: 12px !important;
+    font-weight: 500;
+    display: inline-block;
+    vertical-align: middle;
+    border: none;
+    transition: all .3s ease;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    background-position: 12px center;
+    background-repeat: no-repeat;
+    height: fit-content;
+}
+
+.fields .dayButton:hover {
+    background-color: #A3A3A3;
+    color: #FFF;
+}
+
+.fields .dayButton:focus {
+    transition: all .1s ease;
+    text-decoration: none;
+    background-color: #72D285;
+    color: #FFF;
+    outline: none;
+    box-shadow: 0px 0px 0px 2px #FF981D;
+}
