@@ -7,7 +7,7 @@ export default function SelectWard() {
 
   return (
     <JustHeader>
-        <div style={{ textAlign: "center", paddingTop: "50px" }}>
+        <div style={{ textAlign: "center", paddingTop: "50px", height: "100vh" }}>
             <p><b>Booked Shifts</b></p>
             <div className="grid-container">
               <button className="ward_button">
