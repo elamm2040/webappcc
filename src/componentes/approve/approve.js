@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ContainerOutlined, CheckCircleOutlined } from  '@ant-design/icons';
 import environment from "../../environment/environment";
 import { format } from 'date-fns';
-import { Card, Steps } from 'antd';
-import { Checkbox } from 'antd';
+import { Checkbox, Input, Card, Steps } from 'antd';
 
 export default function Approve() {
     const shiftsRedux = useSelector(state => state.shifts.value);
@@ -75,6 +74,17 @@ export default function Approve() {
                     <p>
                         <Checkbox>I agree to the above</Checkbox>
                     </p>
+                    <table className="fields">
+                        <tr>
+                            <td><Input className="addShiftInput" placeholder="Signatory Name" /></td>
+                        </tr>
+                        <tr>
+                            <td><Input className="addShiftInput" placeholder="Psition" /></td>
+                        </tr>
+                        <tr>
+                            <td><Input className="addShiftInput" placeholder="Email" /></td>
+                        </tr>
+                    </table>
                 </div>
                 <div className="col">
 
