@@ -1,6 +1,7 @@
 import React from "react";
 import './layout.css';
 import { CalendarOutlined, SendOutlined, MessageOutlined, FileTextOutlined } from  '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 export default function General(props) {
     const tableWidth = "100%";
@@ -9,7 +10,9 @@ export default function General(props) {
             <header className="empAppHeader"></header>
             { props.children }
             <section className="fixedFooter">
-                <button className="send_button"> Send for Approval </button>
+                <Link to="./approve">
+                    <button className="send_button"> Send for Approval </button>
+                </Link>
                 <div className="mobileSection">
                     <table width={ tableWidth }>
                         <tr>
