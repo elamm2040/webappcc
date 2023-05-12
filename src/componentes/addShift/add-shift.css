@@ -35,6 +35,7 @@
     margin: auto;
     border-collapse: collapse;
     color: #444444;
+    margin-top:60px
 }
 
 .fields td {
@@ -96,6 +97,10 @@
     background-color: #FFF;
 }
 
+.fields .counterButtons {
+    width: 80px;
+}
+
 .fields .counterButton {
     margin-left: 2px;
     margin-right: 2px;
@@ -110,7 +115,7 @@
     padding-bottom: 29px;
 }
 
-.fields .dayButton {
+/*.fields .dayButton {
     min-width: 98px;
     margin: 0px;
     background-color: #BCBCBC;
@@ -129,18 +134,6 @@
     background-position: 12px center;
     background-repeat: no-repeat;
     height: fit-content;
-}
+}*/
 
-.fields .dayButton:hover {
-    background-color: #A3A3A3;
-    color: #FFF;
-}
 
-.fields .dayButton:focus {
-    transition: all .1s ease;
-    text-decoration: none;
-    background-color: #72D285;
-    color: #FFF;
-    outline: none;
-    box-shadow: 0px 0px 0px 2px #FF981D;
-}

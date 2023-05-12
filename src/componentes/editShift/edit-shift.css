@@ -1,0 +1,14 @@
+.fields .counterButton {
+    margin-left: 2px;
+    margin-right: 2px;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-color: #37C3CA;
+    color: #FFF;
+    font-size: 20px;
+    padding-bottom: 29px;
+}
+

@@ -2,9 +2,13 @@ import React, { useEffect, useRef } from "react";
 import ListarDbModel from "../models/listar-db.model";
 import { useSelector, useDispatch } from "react-redux";
 import { addShift } from "../../app/features/shifts-list";
-import {  Row, Card, Form, Input, Button } from 'antd';
+import {  Row, Input } from 'antd';
 import { Route, Routes, Link } from 'react-router-dom';
 import environment from "../../environment/environment";
+import Header from "../layout/header";
+import Footer from "../layout/footer";
+import Card from "../layout/main-card";
+import Button from "../layout/main-button";
 import '../listar_db.css';
 import './add-shift.css';
 
@@ -33,8 +37,9 @@ export default function Add_shift() {
     }
 
     return (
-        <section>
-            <Row gutter={16}>
+        <div>
+            <Header title="Shifts" week="0" action_button="Logout"></Header>
+            <section className="timesheetDays">
                 <Card className="addCard"  bordered={false}>
                     <table className="fields">
                         <tr>
@@ -93,25 +98,25 @@ export default function Add_shift() {
                             <td colSpan={2}>
                                 <table className="days">
                                     <tr>
-                                        <td><Button className="dayButton">Mon 3th</Button></td>
+                                        <td><Button className="dayButton" text ='Mon 3th' color='grey'></Button></td>
                                     </tr>
                                     <tr>
-                                        <td><Button className="dayButton">Tue 4th</Button></td>
+                                        <td><Button className="dayButton" text='Tue 4th' color='grey'></Button></td>
                                     </tr>
                                     <tr>
-                                        <td><Button className="dayButton">Wed 5th</Button></td>
+                                        <td><Button className="dayButton" text='Wed 5th' color='grey'></Button></td>
                                     </tr>
                                     <tr>
-                                        <td><Button className="dayButton">Thu 6th</Button></td>
+                                        <td><Button className="dayButton" text='Thu 6th' color='grey'></Button></td>
                                     </tr>
                                     <tr>
-                                        <td><Button className="dayButton">Fri 7th</Button></td>
+                                        <td><Button className="dayButton" text='Fri 7th' color='grey'></Button></td>
                                     </tr>
                                     <tr>
-                                        <td><Button className="dayButton">Sat 8th</Button></td>
+                                        <td><Button className="dayButton" text='Sat 8th' color='grey'></Button></td>
                                     </tr>
                                     <tr>
-                                        <td><Button className="dayButton">Sun 9th</Button></td>
+                                        <td><Button className="dayButton" text='Sun 9th' color='grey'></Button></td>
                                     </tr>
                                 </table>
                             </td>
@@ -119,12 +124,9 @@ export default function Add_shift() {
                     </table>
                     
                 </Card>
-            </Row>
-            <br></br>
-            <Link to="/" className="list">
-                <button className="save_button" onClick={Save_Shift()}> Save </button>  
-            </Link>
-            
-        </section>
+                <br></br>               
+            </section>
+            <Footer button_text="Save" show='0'></Footer>
+        </div>
     );
 }

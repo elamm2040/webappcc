@@ -18,7 +18,8 @@ const ListarDbModel = (data = []) => {
             location: element.location,
             sbtiId: element.sbti_id,
             startTime: element.start_time,
-            sublocation: element.sublocation
+            sublocation: element.sublocation,
+            offline: 0
         });
     });
 

@@ -4,8 +4,6 @@ body {
 
 .add {
     margin-bottom: 20px;
-    width: 100%;
-    padding-left: 40%;
 }
 
 .add_button {
@@ -47,29 +45,26 @@ body {
 }
 
 .timesheetDays {
+    display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     align-items: stretch;
     margin: 10px -10px 45px;
     color: #444444;
-    width: 100%;
 }
 
-.futureTimesheets > h2 {
+.timesheetDays > h2 {
     width: 100%;
     text-align: center;
     padding: 0px 10px;
     margin-top: 30px;
-    font-size: 16px;
-    font-weight: 700;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-.ant-row.css-dev-only-do-not-override-1vtf12y {
+/*.ant-row.css-dev-only-do-not-override-1vtf12y {
     width: 100%;
     justify-content: center;
-}
+}*/
 
 .ant-steps {
     margin-left: -8px !important;
@@ -113,57 +108,8 @@ body {
     
 }
 
-.timesheetCard {
-    width: 314px;
-    background-color: #FFF;
-    border-radius: 6px;
-    padding: 20px;
-    box-shadow: 3px 3px 15px 0px rgba(0,0,0,0.15) !important;
-    /*margin: 10px;*/
-    border: none;
-    color: #444444;
-    width: 400px;
-    max-width: 100%;
-    font-weight: 500;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: stretch;
-    margin: 10px -10px 45px;
-    position: relative;
-}
-
-.timesheetCard.approved {
-    opacity: 0.7;
-    background-color: #E1E1E1;
-    box-shadow: none !important;
-}
-
 .timesheetCard.future, button.editOptions.future {
     opacity: 0.7;
-}
-
-.timesheetCard h3 {
-    font-family: Arial;
-    font-size: 8.5pt;
-    line-height: 1.5;
-    font-weight: bold;
-    color: #444444;
-}
-
-.timesheetCard h3 .confirm_label {
-    float: right;
-    margin-right: -69px;
-}
-
-.timesheetCard h3 .check {
-    float: right;
-    margin-right: 34px;
-}
-
-.timesheetCard h3 .not_approved {
-    display: none;
 }
 
 .timesheetCard p.duration {
@@ -193,30 +139,13 @@ body {
     border-spacing: 2px;
 }
 
-.timesheetCard .button {
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: -4px;
-    margin-right: -7px;
-    position: relative;
-    background-color: #45BEF4;
-    color: #FFF;
-    margin-left: 34%;
-    font-size: 14px !important;
-    font-weight: 600;
-    padding: 8px 12px;
-    border: none;
-    transition: all .3s ease;
-    text-decoration: none;
-    border-radius: 4px;
+.buttonRow {
     text-align: center;
-    box-sizing: border-box;
-    cursor: pointer;
-    background-position: 12px center;
-    background-repeat: no-repeat;
-    border-collapse: collapse;
+    vertical-align: top;
 }
 
-.timesheetCard .button:hover, .add_button:hover {
-    background-color: #4ac661;
+@media screen and (min-width: 767px) {
+    .timesheetCard {
+        width: 314px;
+    }
 }

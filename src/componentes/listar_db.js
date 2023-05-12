@@ -3,13 +3,16 @@ import ListarDbModel from "./models/listar-db.model";
 import { useSelector, useDispatch } from "react-redux";
 import { addAllShifts } from "../app/features/shifts-list";
 import environment from "../environment/environment";
-import {  Card, Col, Row, Steps } from 'antd';
-import { ContainerOutlined, CheckCircleOutlined } from  '@ant-design/icons';
+import { Steps } from 'antd';
+import { ContainerOutlined, CheckCircleOutlined, ExclamationCircleOutlined } from  '@ant-design/icons';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 
 import './listar_db.css';
-import General from "./layout/general";
+import Header from "./layout/header";
+import Footer from "./layout/footer";
+import Card from "./layout/main-card";
+import Button from "./layout/main-button";
 
 export default function List() {
   const shouldLog = useRef(true);
@@ -34,23 +37,25 @@ export default function List() {
   const futureShifts = shiftsRedux.filter(el => el.upcoming_shift == 1);
 
   return (
-    <General>
-      <Link to="./add_shift" className="add">
-        <button className="add_button"> + Add Shift </button>  
-      </Link>
+    <div>
+        <Header title="Shifts" week="This Week" action_button="Logout"></Header>
+        <section className="timesheetDays" style={{marginTop: '60px', marginBottom: '0px' }}>
+          <Link to="./add_shift" className="add">
+            <Button text='+ Add Shift' color='blue'> </Button>  
+          </Link>
+      </section>
       <br></br>
       <section className="timesheetDays">
-        <Row gutter={16}>
         { 
           currentShifts.map(el => (
-            <Col span={6} className="col">
-              <Card className={el.approved == 1 ? 'timesheetCard approved' : 'timesheetCard'}  bordered={false}>
-                <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } 
-                  
-                  <CheckCircleOutlined className={el.approved == 1 ?'check':'not_approved'} /><span className={el.approved == 1 ?'confirm_label':'not_approved'}> Approved</span> 
-                 
-                
-                </h3>
+              <Card approved={el.approved == 1 ? 'approved' : ''} offline={el.offline == 1 ? 'offline' : ''}  bordered={false}>
+                <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } </h3>
+                <div style={ 
+                    el.approved == 0 ? {display:'none'} 
+                    : {display:'inline block', width: 'fit-content', marginTop: '-32px', marginLeft: '65%'}}>
+                  <CheckCircleOutlined style={{width:'14%', float: 'left'}} />
+                  <h3 style={{width:'86%', float: 'right', paddingLeft: '10px'}}> Approved</h3>
+                </div>
                 <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>
                 <p> { el.location } </p> 
                 <p> { el.sublocation } </p>
@@ -74,56 +79,64 @@ export default function List() {
 
                 <p className="expenses"> <ContainerOutlined /> 0 Expenses </p>
                     
-                <button className="button" type="primary"> View Shift </button>
+                <div className="buttonRow">
+                  <Link to="./edit_shift" className="edit">
+                    <Button className="button" type="primary" text='View Shift' color='blue'> </Button>
+                  </Link>
+                </div>
+                <div className="offlineAlert">
+                  <ExclamationCircleOutlined />
+                  <span class="tooltiptext">This shift is on offline mode</span>
+                </div>
+                
               </Card>
-            </Col>
           ))
         }
-        </Row>
-
-        {futureShifts.length > 0 ?
-          <div className="futureTimesheets">
-            <h2>Upcoming Shifts</h2>
-            <Row gutter={16}>
-          { 
+      </section> 
+      <section className="timesheetDays">
+        <h2>Upcoming Shifts</h2>
+      </section>
+      <section className="timesheetDays"> 
+        {futureShifts.length > 0 ?  
             futureShifts.map(el => (
-              <Col span={6} className="col">
-                <Card className="timesheetCard"  bordered={false}>
-                  <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } </h3>
-                  <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>
-                  <p> { el.location } </p> 
-                  <p> { el.sublocation } </p>
-                    
-                  <Steps className="steps"
-                      progressDot
-                      size="small"
-                      items={[
-                        {
-                          title: 'Start Time',
-                          status: 'finish',
-                          description:  el.startTime.slice(0,2) + ':' + el.startTime.slice(2,4) 
-                        },
-                        {
-                          title: 'Finish Time',
-                          status: 'finish',
-                          description: el.finishTime.slice(0,2) + ':' + el.finishTime.slice(2,4)
-                        },
-                      ]}
-                  />
+              <Card className="timesheetCard"  bordered={false}>
+                <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } </h3>
+                <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>
+                <p> { el.location } </p> 
+                <p> { el.sublocation } </p>
+                  
+                <Steps className="steps"
+                    progressDot
+                    size="small"
+                    items={[
+                      {
+                        title: 'Start Time',
+                        status: 'finish',
+                        description:  el.startTime.slice(0,2) + ':' + el.startTime.slice(2,4) 
+                      },
+                      {
+                        title: 'Finish Time',
+                        status: 'finish',
+                        description: el.finishTime.slice(0,2) + ':' + el.finishTime.slice(2,4)
+                      },
+                    ]}
+                />
 
-                  <p className="expenses"> <ContainerOutlined /> 0 Expenses </p>
-                      
-                  <button className="button" type="primary"> View Shift </button>
-                </Card>
-              </Col>
+                <p className="expenses"> <ContainerOutlined /> 0 Expenses </p>
+                    
+                <div className="buttonRow">
+                  <Link to="./edit_shift" className="edit">
+                    <Button className="button" type="primary" text="View Shift" color='blue'> </Button>
+                  </Link>
+                </div>
+              </Card>
             ))
-          }
-            </Row>
-          </div>
-            :<div></div>
+        
+          :<div></div>
         }
         
       </section>
-    </General>
+      <Footer button_text="Send for Approval" show='1'></Footer>
+    </div>
   );
 }
