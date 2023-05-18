@@ -7,7 +7,7 @@ import Button from "../layout/main-button";
 import { Input } from "antd";
 import AddShiftService from "./add-shift.service";
 import { addShift } from "../../app/features/shifts-list";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Add_shift() {
     const shiftsRedux = useSelector(state => state.shifts.value);
@@ -44,7 +44,7 @@ export default function Add_shift() {
                                 <td>
                                     <Input className="addShiftInput" 
                                            name="client" 
-                                           onChange={e => {shiftForm.client = e.target.value}} />
+                                           onChange={e => {shiftForm.client = e.target.value; setShiftForm(shiftForm)}} />
                                 </td>
                             </tr>
                             <tr>
