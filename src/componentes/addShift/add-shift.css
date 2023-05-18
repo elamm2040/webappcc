@@ -17,7 +17,7 @@
     cursor: pointer;
 }
 
-.addCard {
+form .addCard {
     width: 405px;
     background-color: #FFF;
     border-radius: 6px;

@@ -28,16 +28,19 @@ export default function List() {
       .then(res => res.json())
       .then(data => {
         const json = ListarDbModel(data);
-        dispatch(addAllShifts(json));
+        if(shiftsRedux.length === 0)
+          dispatch(addAllShifts(json));
       });
     }
   }, [dispatch, shiftsRedux, env]);
 
-  const currentShifts = shiftsRedux.filter(el => el.upcoming_shift == 0);
-  const futureShifts = shiftsRedux.filter(el => el.upcoming_shift == 1);
+  console.log(shiftsRedux);
+
+  const currentShifts = shiftsRedux.filter(el => el.upcomingShift == 0);
+  const futureShifts = shiftsRedux.filter(el => el.upcomingShift == 1);
 
   return (
-    <div>
+    <>
         <Header title="Shifts" week="This Week" action_button="Logout"></Header>
         <section className="timesheetDays" style={{marginTop: '60px', marginBottom: '0px' }}>
           <Link to="./add_shift" className="add">
@@ -137,6 +140,6 @@ export default function List() {
         
       </section>
       <Footer button_text="Send for Approval" show='1'></Footer>
-    </div>
+    </>
   );
 }

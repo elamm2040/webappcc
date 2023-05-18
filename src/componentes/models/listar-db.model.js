@@ -13,7 +13,7 @@ const ListarDbModel = (data = []) => {
             contract: element.contract,
             day: element.day,
             edited: element.edited,
-            upcoming_shift: element.upcoming_shift,
+            upcomingShift: element.upcoming_shift,
             finishTime: element.finish_time,
             location: element.location,
             sbtiId: element.sbti_id,
