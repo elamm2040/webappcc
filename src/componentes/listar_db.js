@@ -7,6 +7,7 @@ import { Steps } from 'antd';
 import { ContainerOutlined, CheckCircleOutlined, ExclamationCircleOutlined } from  '@ant-design/icons';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import './listar_db.css';
 import Header from "./layout/header";
@@ -18,6 +19,7 @@ export default function List() {
   const shouldLog = useRef(true);
   const shiftsRedux = useSelector(state => state.shifts.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const env = environment;
 
   useEffect(() => {
@@ -34,18 +36,20 @@ export default function List() {
     }
   }, [dispatch, shiftsRedux, env]);
 
-  console.log(shiftsRedux);
-
   const currentShifts = shiftsRedux.filter(el => el.upcomingShift == 0);
   const futureShifts = shiftsRedux.filter(el => el.upcomingShift == 1);
 
+  function sendForApproval() {
+    navigate("/select_ward");
+  }
+
   return (
     <>
-        <Header title="Shifts" week="This Week" action_button="Logout"></Header>
-        <section className="timesheetDays" style={{marginTop: '60px', marginBottom: '0px' }}>
-          <Link to="./add_shift" className="add">
-            <Button text='+ Add Shift' color='blue'> </Button>  
-          </Link>
+      <Header title="Shifts" week="This Week" action_button="Logout"></Header>
+      <section className="timesheetDays" style={{marginTop: '60px', marginBottom: '0px' }}>
+        <Link to="./add_shift" className="add">
+          <Button text='+ Add Shift' color='blue'> </Button>  
+        </Link>
       </section>
       <br></br>
       <section className="timesheetDays">
@@ -139,7 +143,7 @@ export default function List() {
         }
         
       </section>
-      <Footer button_text="Send for Approval" show='1'></Footer>
+      <Footer button_text="Send for Approval" show='1' function={sendForApproval}></Footer>
     </>
   );
 }
