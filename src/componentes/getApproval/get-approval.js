@@ -2,8 +2,12 @@ import React from "react";
 import './get-approval.css';
 import JustHeader from "../layout/just-header";
 import { LoginOutlined } from  '@ant-design/icons';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function GetApproval() {
+    const location = useLocation();
+    const { subLoc } = location.state;
 
     return (
         <div style={{ textAlign: "center", paddingTop: "50px", paddingLeft: "30px", paddingRight: "30px", height: "100vh" }}>
@@ -11,9 +15,9 @@ export default function GetApproval() {
             <h1 style={{ fontSize: "28px" }}>
                 Please hand your device over to your authoriser to approve your shift(s)
             </h1>
-            <button className="ward_button">
+            <Link to="/approve" className="ward_button" state={{ subLoc: subLoc }}>
                 Proceed to approval
-            </button>
+            </Link>
             <br />
             <br />
             <br />

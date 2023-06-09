@@ -7,11 +7,15 @@ import { ContainerOutlined, CheckCircleOutlined } from  '@ant-design/icons';
 import environment from "../../environment/environment";
 import { format } from 'date-fns';
 import { Checkbox } from 'antd';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function SignCandidate() {
     const shiftsRedux = useSelector(state => state.shifts.value);
     const dispatch = useDispatch();
     const env = environment;
+    const location = useLocation();
+    const { subLoc } = location.state;
 
     return (
         <JustHeader>
@@ -25,42 +29,79 @@ export default function SignCandidate() {
             <br />
             <div className="row">
                 {
-                    shiftsRedux.map(el => (
-                        <div key={el.id} className="col">
-                            <Card className={el.approved == 1 ? 'timesheetCard approved' : 'timesheetCard'}  bordered={false} style={{ textAlign: "left" }}>
-                                <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } 
-                                
-                                <CheckCircleOutlined className={el.approved == 1 ?'check':'not_approved'} /><span className={el.approved == 1 ?'confirm_label':'not_approved'}> Approved</span> 
-                                
-                                
-                                </h3>
-                                <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>
-                                <p> { el.location } </p> 
-                                <p> { el.sublocation } </p>
-                                
-                                <Steps className="steps"
-                                    progressDot
-                                    size="small"
-                                    items={[
-                                    {
-                                        title: 'Start Time',
-                                        status: 'finish',
-                                        description:  el.startTime.slice(0,2) + ':' + el.startTime.slice(2,4) 
-                                    },
-                                    {
-                                        title: 'Finish Time',
-                                        status: 'finish',
-                                        description: el.finishTime.slice(0,2) + ':' + el.finishTime.slice(2,4)
-                                    },
-                                    ]}
-                                />
-
-                                <p className="expenses"> <ContainerOutlined /> 0 Expenses </p>
+                    shiftsRedux.map(el => {
+                        if(!subLoc) {
+                            return <div key={el.id} className="col">
+                                <Card className={el.approved == 1 ? 'timesheetCard approved' : 'timesheetCard'}  bordered={false} style={{ textAlign: "left" }}>
+                                    <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } 
                                     
-                                <button className="button" type="primary"> View Shift </button>
-                            </Card>
-                        </div>
-                    ))
+                                    <CheckCircleOutlined className={el.approved == 1 ?'check':'not_approved'} /><span className={el.approved == 1 ?'confirm_label':'not_approved'}> Approved</span> 
+                                    
+                                    
+                                    </h3>
+                                    <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>
+                                    <p> { el.location } </p> 
+                                    <p> { el.sublocation } </p>
+                                    
+                                    <Steps className="steps"
+                                        progressDot
+                                        size="small"
+                                        items={[
+                                        {
+                                            title: 'Start Time',
+                                            status: 'finish',
+                                            description:  el.startTime.slice(0,2) + ':' + el.startTime.slice(2,4) 
+                                        },
+                                        {
+                                            title: 'Finish Time',
+                                            status: 'finish',
+                                            description: el.finishTime.slice(0,2) + ':' + el.finishTime.slice(2,4)
+                                        },
+                                        ]}
+                                    />
+
+                                    <p className="expenses"> <ContainerOutlined /> 0 Expenses </p>
+                                        
+                                    <button className="button" type="primary"> View Shift </button>
+                                </Card>
+                            </div>;
+                        } else if(el.sublocation == subLoc) {
+                            return <div key={el.id} className="col">
+                                <Card className={el.approved == 1 ? 'timesheetCard approved' : 'timesheetCard'}  bordered={false} style={{ textAlign: "left" }}>
+                                    <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } 
+                                    
+                                    <CheckCircleOutlined className={el.approved == 1 ?'check':'not_approved'} /><span className={el.approved == 1 ?'confirm_label':'not_approved'}> Approved</span> 
+                                    
+                                    
+                                    </h3>
+                                    <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>
+                                    <p> { el.location } </p> 
+                                    <p> { el.sublocation } </p>
+                                    
+                                    <Steps className="steps"
+                                        progressDot
+                                        size="small"
+                                        items={[
+                                        {
+                                            title: 'Start Time',
+                                            status: 'finish',
+                                            description:  el.startTime.slice(0,2) + ':' + el.startTime.slice(2,4) 
+                                        },
+                                        {
+                                            title: 'Finish Time',
+                                            status: 'finish',
+                                            description: el.finishTime.slice(0,2) + ':' + el.finishTime.slice(2,4)
+                                        },
+                                        ]}
+                                    />
+
+                                    <p className="expenses"> <ContainerOutlined /> 0 Expenses </p>
+                                        
+                                    <button className="button" type="primary"> View Shift </button>
+                                </Card>
+                            </div>;
+                        }
+                    })
                 }
             </div>
             <div className="row" style={{ textAlign: "left" }}>
@@ -76,9 +117,9 @@ export default function SignCandidate() {
                         <Checkbox>I agree to the above</Checkbox>
                     </p>
                     <div style={{ textAlign: "center" }}>
-                        <button className="ward_button">
+                        <Link to="/get_approval" className="ward_button" state={{ subLoc: subLoc }}>
                             Confirm
-                        </button>
+                        </Link>
                     </div>
                     <div style={{ textAlign: "center" }}>
                         <p>Back</p>

@@ -4,6 +4,7 @@ import './select-ward.css';
 import { EnvironmentOutlined } from  '@ant-design/icons';
 import { useSelector } from "react-redux";
 import { useNavigate, Navigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function SelectWard() {
   const shiftsRedux = useSelector(state => state.shifts.value);
@@ -28,10 +29,10 @@ export default function SelectWard() {
               <p><b>Booked Shifts</b></p>
               <div className="grid-container">
                 {
-                  arrWards.map(el => (
-                    <button className="ward_button">
+                  arrWards.map(( el, key ) => (
+                    <Link key={key} to="/sign_candidate" className="ward_button" state={{ subLoc: el }}>
                       <EnvironmentOutlined /> { el }
-                    </button>
+                    </Link>
                   ))
                 }
                 <div style={{ marginTop: "30px" }}>
