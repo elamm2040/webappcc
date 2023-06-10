@@ -2,7 +2,8 @@ import React from "react";
 import './sign-candidate.css';
 import JustHeader from "../layout/just-header";
 import { useSelector, useDispatch } from "react-redux";
-import {  Card, Steps } from 'antd';
+import {  Steps } from 'antd';
+import Card from "../layout/main-card";
 import { ContainerOutlined, CheckCircleOutlined } from  '@ant-design/icons';
 import environment from "../../environment/environment";
 import { format } from 'date-fns';
@@ -27,83 +28,37 @@ export default function SignCandidate() {
             </div>
             <br />
             <br />
-            <div className="row">
+            <section className="timesheetDays">
                 {
                     shiftsRedux.map(el => {
                         if(!subLoc) {
-                            return <div key={el.id} className="col">
-                                <Card className={el.approved == 1 ? 'timesheetCard approved' : 'timesheetCard'}  bordered={false} style={{ textAlign: "left" }}>
-                                    <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } 
-                                    
-                                    <CheckCircleOutlined className={el.approved == 1 ?'check':'not_approved'} /><span className={el.approved == 1 ?'confirm_label':'not_approved'}> Approved</span> 
-                                    
-                                    
-                                    </h3>
+                            return <div key={el.id} style={{ textAlign: "left !important" }}>
+                                <Card approved='approved' bordered={false} style={{ opacity: 1, marginLeft: 'auto', 
+marginRight: 0 }}>
+                                    <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } </h3>
                                     <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>
                                     <p> { el.location } </p> 
-                                    <p> { el.sublocation } </p>
-                                    
-                                    <Steps className="steps"
-                                        progressDot
-                                        size="small"
-                                        items={[
-                                        {
-                                            title: 'Start Time',
-                                            status: 'finish',
-                                            description:  el.startTime.slice(0,2) + ':' + el.startTime.slice(2,4) 
-                                        },
-                                        {
-                                            title: 'Finish Time',
-                                            status: 'finish',
-                                            description: el.finishTime.slice(0,2) + ':' + el.finishTime.slice(2,4)
-                                        },
-                                        ]}
-                                    />
-
-                                    <p className="expenses"> <ContainerOutlined /> 0 Expenses </p>
-                                        
-                                    <button className="button" type="primary"> View Shift </button>
+                                    <p> Start Time { el.startTime } </p>
+                                    <p> End Time { el.finishTime } </p>
+                                    <p> Break Time { el.break } mins </p>
                                 </Card>
                             </div>;
                         } else if(el.sublocation == subLoc) {
-                            return <div key={el.id} className="col">
-                                <Card className={el.approved == 1 ? 'timesheetCard approved' : 'timesheetCard'}  bordered={false} style={{ textAlign: "left" }}>
-                                    <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') } 
-                                    
-                                    <CheckCircleOutlined className={el.approved == 1 ?'check':'not_approved'} /><span className={el.approved == 1 ?'confirm_label':'not_approved'}> Approved</span> 
-                                    
-                                    
-                                    </h3>
+                            return <div key={el.id} style={{ textAlign: "left !important" }}>
+                                <Card approved='approved'  bordered={false} style={{ opacity: 1, marginLeft: 'auto',
+marginRight: 0 }}>
+                                    <h3> { env.days[el.day] } { format(new Date(el.date), 'do MMMM') }  </h3>
                                     <p className="duration"> { (((el.finishTime - el.startTime - el.break)).toString()).slice(0,1) } hours </p>
                                     <p> { el.location } </p> 
-                                    <p> { el.sublocation } </p>
-                                    
-                                    <Steps className="steps"
-                                        progressDot
-                                        size="small"
-                                        items={[
-                                        {
-                                            title: 'Start Time',
-                                            status: 'finish',
-                                            description:  el.startTime.slice(0,2) + ':' + el.startTime.slice(2,4) 
-                                        },
-                                        {
-                                            title: 'Finish Time',
-                                            status: 'finish',
-                                            description: el.finishTime.slice(0,2) + ':' + el.finishTime.slice(2,4)
-                                        },
-                                        ]}
-                                    />
-
-                                    <p className="expenses"> <ContainerOutlined /> 0 Expenses </p>
-                                        
-                                    <button className="button" type="primary"> View Shift </button>
+                                    <p> Start Time { el.startTime } </p>
+                                    <p> End Time { el.finishTime } </p>
+                                    <p> Break Time { el.break } mins </p>
                                 </Card>
                             </div>;
                         }
                     })
                 }
-            </div>
+            </section>
             <div className="row" style={{ textAlign: "left" }}>
                 <div className="col">
 
