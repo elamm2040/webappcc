@@ -18,6 +18,7 @@ import Button from "./layout/main-button";
 export default function List() {
   const shouldLog = useRef(true);
   const shiftsRedux = useSelector(state => state.shifts.value);
+  const onLineRedux = useSelector(state => state.onLine.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const env = environment;
@@ -26,13 +27,15 @@ export default function List() {
     if(shouldLog.current) {
       shouldLog.current = false;
 
-      fetch(env.apiURL + 'db.php')
-      .then(res => res.json())
-      .then(data => {
-        const json = ListarDbModel(data);
-        if(shiftsRedux.length === 0)
-          dispatch(addAllShifts(json));
-      });
+      if(onLineRedux) {
+        fetch(env.apiURL + 'db.php')
+        .then(res => res.json())
+        .then(data => {
+          const json = ListarDbModel(data);
+          if(shiftsRedux.length === 0)
+            dispatch(addAllShifts(json));
+        });
+      }
     }
   }, [dispatch, shiftsRedux, env]);
 

@@ -7,8 +7,26 @@ import SelectWard from './componentes/selectWard/select-ward';
 import SignCandidate from './componentes/signCandidate/sign-candidate';
 import GetApproval from './componentes/getApproval/get-approval';
 import Approve from './componentes/approve/approve';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { addOnLineValue } from './app/features/on-line';
 
 function App() {
+  const onLineRedux = useSelector(state => state.onLine.value);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    var intervalId = setInterval(onLineCache, 1000, checkNavigatorOnLine());
+  }, [onLineRedux]);
+
+  function checkNavigatorOnLine() {
+    return window.navigator.onLine;
+  }
+
+  function onLineCache(onLine) {
+    dispatch(addOnLineValue(onLine));
+  }
+
   return (
     <Router>
       <Routes>
