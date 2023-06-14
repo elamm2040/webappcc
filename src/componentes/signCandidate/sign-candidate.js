@@ -10,6 +10,8 @@ import { format } from 'date-fns';
 import { Checkbox } from 'antd';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { addSignCandidateValue, addSignCandidateOnLineValue } from "../../app/features/sign-candidate.slice";
+import ConnectionService from "../services/connection.service";
 
 export default function SignCandidate() {
     const shiftsRedux = useSelector(state => state.shifts.value);
@@ -17,6 +19,11 @@ export default function SignCandidate() {
     const env = environment;
     const location = useLocation();
     const { subLoc } = location.state;
+
+    function saveWard(ward) {
+        dispatch(addSignCandidateValue(ward));
+        dispatch(addSignCandidateOnLineValue(ConnectionService()));
+    }
 
     return (
         <JustHeader>
@@ -72,7 +79,7 @@ marginRight: 0 }}>
                         <Checkbox>I agree to the above</Checkbox>
                     </p>
                     <div style={{ textAlign: "center" }}>
-                        <Link to="/get_approval" className="ward_button" state={{ subLoc: subLoc }}>
+                        <Link to="/get_approval" className="ward_button" state={{ subLoc: subLoc }} onClick={() => saveWard(subLoc)}>
                             Confirm
                         </Link>
                     </div>

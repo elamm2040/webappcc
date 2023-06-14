@@ -8,6 +8,7 @@ import { ContainerOutlined, CheckCircleOutlined, ExclamationCircleOutlined } fro
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import ConnectionService from "./services/connection.service";
 
 import './listar_db.css';
 import Header from "./layout/header";
@@ -26,8 +27,8 @@ export default function List() {
   useEffect(() => {
     if(shouldLog.current) {
       shouldLog.current = false;
-
-      if(onLineRedux) {
+      
+      if(ConnectionService()) {
         fetch(env.apiURL + 'db.php')
         .then(res => res.json())
         .then(data => {

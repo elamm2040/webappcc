@@ -8,6 +8,8 @@ import { format } from 'date-fns';
 import { Checkbox, Input, Card, Steps } from 'antd';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { addSignAutoValue, addSignAutoOnLineValue } from "../../app/features/sign-auto.slice";
+import ConnectionService from "../services/connection.service";
 
 export default function Approve() {
     const shiftsRedux = useSelector(state => state.shifts.value);
@@ -15,6 +17,11 @@ export default function Approve() {
     const env = environment;
     const location = useLocation();
     const { subLoc } = location.state;
+
+    function saveWard(ward) {
+        dispatch(addSignAutoValue(ward));
+        dispatch(addSignAutoOnLineValue(ConnectionService()));
+    }
 
     return (
         <JustHeader>
@@ -130,6 +137,11 @@ export default function Approve() {
                 <div className="col">
 
                 </div>
+            </div>
+            <div className="row" style={{ paddingTop: "20px", textAlign: "center" }}>
+                <Link to="/" className="ward_button" onClick={() => saveWard(subLoc)}>
+                    Confirm
+                </Link>
             </div>
         </JustHeader>
     );

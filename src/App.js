@@ -16,7 +16,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    var intervalId = setInterval(onLineCache, 1000, checkNavigatorOnLine());
+    var intervalId = setInterval(onLineCache, 500, checkNavigatorOnLine());
   }, [onLineRedux]);
 
   function checkNavigatorOnLine() {
@@ -25,6 +25,7 @@ function App() {
 
   function onLineCache(onLine) {
     dispatch(addOnLineValue(onLine));
+    //todo: terminar el guardado
   }
 
   return (
